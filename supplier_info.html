@@ -1,20 +1,32 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
   <head>
+    <!-- Meta tags to set character encoding and viewport properties for responsive design -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Suppliers - The Store</title>
+    
+    <!-- Link to external stylesheet for styling the page -->
     <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Link to external JavaScript file, loaded after the page content -->
     <script src="javascript/javascript.js" defer></script>
   </head>
+
   <body>
     <header>
+      <!-- The store's title -->
       <div class="nav-title">The Store</div>
+      
+      <!-- Mobile menu toggle button -->
       <div class="mobile-menu" onclick="toggleNav()">
+        <!-- Three bars indicating the mobile menu button -->
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
       </div>
+      
+      <!-- Navigation menu with links to different pages -->
       <nav id="myNav">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -27,6 +39,7 @@
     </header>
 
     <main>
+      <!-- Hero section to display a welcome message about suppliers -->
       <section class="hero">
         <div class="hero-copy">
           <h1>Meet Our Suppliers</h1>
@@ -36,26 +49,34 @@
         </div>
       </section>
 
+      <!-- Content section displaying information about the suppliers -->
       <section class="content">
         <article class="subtitle">
           <h2>Our Proud Suppliers</h2>
+          
+          <!-- Grid displaying individual suppliers -->
           <div class="supplier-grid">
+            <!-- Each supplier is displayed with an image and name -->
             <div class="supplier">
               <img src="image/supplier_1.png" alt="Supplier 1" />
               <p>BidFood</p>
             </div>
+            
             <div class="supplier">
               <img src="image/supplier_2.jpg" alt="Supplier 2" />
               <p>Frucor Suntory</p>
             </div>
+
             <div class="supplier">
               <img src="image/supplier_3.png" alt="Supplier 3" />
               <p>Firstlight Frozen ltd.</p>
             </div>
+
             <div class="supplier">
               <img src="image/supplier_4.png" alt="Supplier 4" />
               <p>Coca Cola</p>
             </div>
+
             <div class="supplier">
               <img src="image/supplier_5.png" alt="Supplier 5" />
               <p>Stock 4 Shop</p>
@@ -65,6 +86,7 @@
       </section>
     </main>
 
+    <!-- Footer with copyright and social media links -->
     <footer>
       <div class="footer-content">
         <p>© 2024 The Store. All rights reserved.</p>

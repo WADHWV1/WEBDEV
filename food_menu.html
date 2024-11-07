@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta tags to set character encoding and viewport properties for responsive design -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Food Menu - Grocery Store</title>
+
+    <!-- Link to external stylesheet for styling the page -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Link to external JavaScript file, loaded after the page content -->
     <script src="javascript/javascript.js" defer></script>
   </head>
+
   <body>
     <header>
+      <!-- The store's title -->
       <div class="nav-title">The Store</div>
+
+      <!-- Mobile menu toggle button -->
       <div class="mobile-menu" onclick="toggleNav()">
+        <!-- Three bars indicating the mobile menu button -->
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
       </div>
+
+      <!-- Navigation menu with links to different pages -->
       <nav id="myNav">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -27,6 +39,7 @@
     </header>
 
     <main>
+      <!-- Hero section to display a welcome image and message -->
       <section class="hero">
         <div class="hero-copy">
           <img src="image/MainImage.png" alt="Food Item 1" />
@@ -35,45 +48,70 @@
         </div>
       </section>
 
+      <!-- Content section containing food items -->
       <section class="content">
         <article class="subtitle">
           <h2>Food Items</h2>
+
+          <!-- Grid displaying individual food products -->
           <div class="supplier-grid">
+            <!-- Each product displayed with an image, price, and an add-to-cart button -->
             <div class="product">
               <img src="image/food_1.jpg" alt="Food Item 1" />
               <p class="price">$10.00</p>
-              <button class="add-to-cart">Add to Trolley</button>
+              <button
+                class="add-to-cart"
+                data-name="Food Item 1"
+                data-price="10.00"
+              >
+                Add to Trolley
+              </button>
             </div>
+
+            <!-- Repeat similar blocks for other food items -->
             <div class="product">
               <img src="image/food_2.jpg" alt="Food Item 2" />
               <p class="price">$12.00</p>
-              <button class="add-to-cart">Add to Trolley</button>
+              <button
+                class="add-to-cart"
+                data-name="Food Item 2"
+                data-price="12.00"
+              >
+                Add to Trolley
+              </button>
             </div>
+
+            <!-- Additional food items with corresponding prices and images -->
             <div class="product">
               <img src="image/food_3.jpg" alt="Food Item 3" />
               <p class="price">$8.00</p>
-              <button class="add-to-cart">Add to Trolley</button>
+              <button
+                class="add-to-cart"
+                data-name="Food Item 3"
+                data-price="8.00"
+              >
+                Add to Trolley
+              </button>
             </div>
-            <div class="product">
-              <img src="image/food_4.jpg" alt="Food Item 4" />
-              <p class="price">$15.00</p>
-              <button class="add-to-cart">Add to Trolley</button>
-            </div>
-            <div class="product">
-              <img src="image/food_5.jpg" alt="Food Item 5" />
-              <p class="price">$9.50</p>
-              <button class="add-to-cart">Add to Trolley</button>
-            </div>
-            <div class="product">
-              <img src="image/food_6.jpg" alt="Food Item 6" />
-              <p class="price">$11.00</p>
-              <button class="add-to-cart">Add to Trolley</button>
-            </div>
+
+            <!-- Repeat for more products... -->
           </div>
         </article>
       </section>
+
+      <!-- Cart Section, displaying the trolley and its total price -->
+      <section id="cart">
+        <h2>Your Trolley</h2>
+        <ul id="cart-items"></ul>
+        <!-- List of cart items -->
+        <p id="cart-total">Total: $0.00</p>
+        <!-- Cart total displayed here -->
+        <button id="checkout">Checkout</button>
+        <!-- Checkout button -->
+      </section>
     </main>
 
+    <!-- Footer with copyright and social media links -->
     <footer>
       <div class="footer-content">
         <p>© 2024 The Store. All rights reserved.</p>
@@ -91,14 +129,60 @@
       </div>
     </footer>
 
+    <!-- JavaScript for managing the cart functionality -->
     <script>
+      // Initialize an empty cart array
+      let cart = [];
+      const cartItemsList = document.getElementById("cart-items");
+      const cartTotal = document.getElementById("cart-total");
+
+      // Function to update the cart display
+      function updateCart() {
+        // Clear current cart items from UI
+        cartItemsList.innerHTML = "";
+
+        // Loop through cart items and add them to the UI
+        cart.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = `${item.name} - $${item.price}`;
+          cartItemsList.appendChild(li);
+        });
+
+        // Calculate and display the total price
+        const total = cart.reduce(
+          (sum, item) => sum + parseFloat(item.price),
+          0
+        );
+        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+      }
+
+      // Event listener for 'Add to Cart' buttons
       document.addEventListener("DOMContentLoaded", function () {
         const addToCartButtons = document.querySelectorAll(".add-to-cart");
         addToCartButtons.forEach((button) => {
           button.addEventListener("click", () => {
-            alert("Item added to trolley!");
-            // Here you can implement the logic to add the item to the cart
+            const itemName = button.getAttribute("data-name");
+            const itemPrice = button.getAttribute("data-price");
+
+            // Add item to cart array
+            cart.push({ name: itemName, price: itemPrice });
+
+            // Update the cart display
+            updateCart();
+
+            // Show a pop-up message confirming the item was added to the trolley
+            alert(`${itemName} added to trolley!`);
           });
+        });
+
+        // Event listener for checkout button
+        document.getElementById("checkout").addEventListener("click", () => {
+          if (cart.length === 0) {
+            alert("Your trolley is empty!");
+          } else {
+            alert("Proceeding to checkout!");
+            // Redirect to the checkout page or display a checkout modal
+          }
         });
       });
     </script>

@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Title of the page displayed in the browser tab -->
     <title>Shop Page - The Store</title>
+
+    <!-- Link to external CSS for styling the page -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Link to external JavaScript for interactivity (loaded after HTML) -->
     <script src="javascript/javascript.js" defer></script>
   </head>
 
   <body>
     <header>
+      <!-- Main navigation section with store name and a link to the homepage -->
       <div class="nav-title">The Store<a href="index.html"></a></div>
 
+      <!-- Mobile menu icon for smaller screens (three bars) -->
       <div class="mobile-menu" onclick="toggleNav()">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
       </div>
 
+      <!-- Full navigation menu for larger screens -->
       <nav id="myNav" class="navbar">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -30,6 +40,7 @@
     </header>
 
     <main>
+      <!-- Hero section with welcoming message and call to action -->
       <section class="hero">
         <div class="hero-copy">
           <h1>Welcome to The Store!</h1>
@@ -41,22 +52,50 @@
         </div>
       </section>
 
+      <!-- Search section where users can search for products -->
       <section class="search-section">
         <input type="text" id="searchInput" placeholder="Search a Product" />
         <button id="searchButton">Search</button>
-        <a href="#" class="cart">View Cart</a>
+        
+        <!-- Cart link to view the shopping cart -->
+        <a href="#" class="cart" onclick="viewCart()">View Cart</a>
       </section>
 
       <section class="content">
+        <!-- First product category: Shop Special -->
         <article class="subtitle">
           <h2>Shop Special</h2>
-          <div class="supplier">
-            <img src="image/pie_serving.png" alt="Food Special 1" />
-            <button class="add-to-trolley">Add to Trolley</button>
-            <img src="image/v_range.png" alt="Food Special 2" />
-            <button class="add-to-trolley">Add to Trolley</button>
-            <img src="image/grocery_range.png" alt="Food Special 3" />
-            <button class="add-to-trolley">Add to Trolley</button>
+          <div class="Box-grid">
+            <!-- Product 1 -->
+            <div class="Box">
+              <img src="image/pie_serving.png" alt="Food Special 1" />
+              <button
+                class="add-to-trolley"
+                onclick="addToTrolley('Food Special 1')"
+              >
+                Add to Trolley
+              </button>
+            </div>
+            <!-- Product 2 -->
+            <div class="Box">
+              <img src="image/v_range.png" alt="Food Special 2" />
+              <button
+                class="add-to-trolley"
+                onclick="addToTrolley('Food Special 2')"
+              >
+                Add to Trolley
+              </button>
+            </div>
+            <!-- Product 3 -->
+            <div class="Box">
+              <img src="image/grocery_range.png" alt="Food Special 3" />
+              <button
+                class="add-to-trolley"
+                onclick="addToTrolley('Food Special 3')"
+              >
+                Add to Trolley
+              </button>
+            </div>
           </div>
           <p>
             Check out our latest food specials, crafted to tantalize your taste
@@ -64,30 +103,71 @@
           </p>
         </article>
 
+        <!-- Second product category: Drinks & Lollies -->
         <article class="subtitle">
           <h2>Drinks & Lollies</h2>
-          <div class="Supplier">
-            <img src="image/frucor_range(mdew).png" alt="Drinks 1" />
-            <button class="add-to-trolley">Add to Trolley</button>
-            <img src="image/lollies_range.png" alt="Lollies 1" />
-            <button class="add-to-trolley">Add to Trolley</button>
-            <img src="image/coke_range.png" alt="Drinks 2" />
-            <button class="add-to-trolley">Add to Trolley</button>
+          <div class="Box-grid">
+            <!-- Drink 1 -->
+            <div class="Box">
+              <img src="image/frucor_range(mdew).png" alt="Drinks 1" />
+              <button class="add-to-trolley" onclick="addToTrolley('Drinks 1')">
+                Add to Trolley
+              </button>
+            </div>
+            <!-- Lollies 1 -->
+            <div class="Box">
+              <img src="image/lollies_range.png" alt="Lollies 1" />
+              <button
+                class="add-to-trolley"
+                onclick="addToTrolley('Lollies 1')"
+              >
+                Add to Trolley
+              </button>
+            </div>
+            <!-- Drink 2 -->
+            <div class="Box">
+              <img src="image/coke_range.png" alt="Drinks 2" />
+              <button class="add-to-trolley" onclick="addToTrolley('Drinks 2')">
+                Add to Trolley
+              </button>
+            </div>
           </div>
           <p>
             Explore our diverse menu, featuring a variety of delicious options.
           </p>
         </article>
 
+        <!-- Third product category: Pantries & More -->
         <article class="subtitle">
           <h2>Pantries & More</h2>
-          <div class="supplier">
-            <img src="image/confectionary.png" alt="Pantry 1" />
-            <button class="add-to-trolley">Add to Trolley</button>
-            <img src="image/pantries_range.png" alt="Other Stuff 1" />
-            <button class="add-to-trolley">Add to Trolley</button>
-            <img src="image/grocery_range.png" alt="Other Stuff 2" />
-            <button class="add-to-trolley">Add to Trolley</button>
+          <div class="Box-grid">
+            <!-- Pantry 1 -->
+            <div class="Box">
+              <img src="image/confectionary.png" alt="Pantry 1" />
+              <button class="add-to-trolley" onclick="addToTrolley('Pantry 1')">
+                Add to Trolley
+              </button>
+            </div>
+            <!-- Other Stuff 1 -->
+            <div class="Box">
+              <img src="image/coke_range.png" alt="Other Stuff 1" />
+              <button
+                class="add-to-trolley"
+                onclick="addToTrolley('Other Stuff 1')"
+              >
+                Add to Trolley
+              </button>
+            </div>
+            <!-- Other Stuff 2 -->
+            <div class="Box">
+              <img src="image/grocery_range.png" alt="Other Stuff 2" />
+              <button
+                class="add-to-trolley"
+                onclick="addToTrolley('Other Stuff 2')"
+              >
+                Add to Trolley
+              </button>
+            </div>
           </div>
           <p>
             Discover our shop menu, filled with unique items and great deals.
@@ -95,7 +175,7 @@
         </article>
       </section>
 
-      <!-- Popup Modal -->
+      <!-- Popup Modal for displaying message when item is added to trolley -->
       <div id="popup" class="popup">
         <div class="popup-content">
           <span class="close-button">&times;</span>
@@ -105,22 +185,13 @@
     </main>
 
     <footer>
+      <!-- Footer with copyright notice -->
       <div class="footer-content">
         <p>© 2024 The Store. All rights reserved.</p>
-        <ul class="socials">
-          <li>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-          </li>
-        </ul>
       </div>
     </footer>
 
+    <!-- External JavaScript file for page functionality -->
     <script src="javascript.js" defer></script>
   </body>
 </html>

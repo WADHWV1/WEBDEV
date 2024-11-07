@@ -101,3 +101,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+let trolley = [];
+
+function addToTrolley(itemName) {
+  trolley.push(itemName);
+  showPopup(itemName); // Show popup with item added
+  updateCartCount(); // Update the cart count display
+}
+
+function showPopup(itemName) {
+  const popup = document.getElementById("popup");
+  const popupMessage = popup.querySelector("p");
+  popupMessage.textContent = `${itemName} added to trolley!`;
+  popup.style.display = "block";
+
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 2000);
+}
+
+function viewCart() {
+  if (trolley.length > 0) {
+    alert("Items in your trolley:\n" + trolley.join("\n"));
+  } else {
+    alert("Your trolley is empty.");
+  }
+}
+
+function clearTrolley() {
+  trolley = []; // Clear the trolley
+  alert("Trolley has been cleared.");
+  updateCartCount(); // Update cart count to reflect the empty trolley
+}
+
+function updateCartCount() {
+  const cartLink = document.querySelector(".cart");
+  const count = trolley.length;
+  cartLink.textContent = `View Cart (${count})`; // Update the text to show the number of items
+}
